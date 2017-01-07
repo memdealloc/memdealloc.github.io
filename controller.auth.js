@@ -126,7 +126,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
   	  gapi.client.sheets.spreadsheets.values.get({
          spreadsheetId: sheetId,
          majorDimension: "ROWS",
-         range: 'Weapon Index!A2:L',
+         range: 'Weapon Index!A2:M',
       }).then(function(response) {
     	  wIndex = response.result.values;
 	      	updateProgressBar(); //update progress bar

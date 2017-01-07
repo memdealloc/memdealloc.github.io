@@ -12,17 +12,18 @@
 	<img class="absolutePos" ng-src="{{getTimeOut()}}" style="top:512px">
 	
 	<audio id = 'audio' controls loop>
-		<source ng-if="musicTrack==0" src="MUS/themeMain.mp3" type="audio/mpeg">
-  		<source ng-if="musicTrack==1" src="MUS/themeFallacy.mp3" type="audio/mpeg">
-  		<source ng-if="musicTrack==2" src="MUS/themeDolour.mp3" type="audio/mpeg">
+		<source ng-if="musicTrack==0" src="MUS/themeBGM1.mp3" type="audio/mpeg">
+  		<source ng-if="musicTrack==1" src="MUS/themeMain.mp3" type="audio/mpeg">
+  		<source ng-if="musicTrack==2" src="MUS/themeFallacy.mp3" type="audio/mpeg">
   		
 		Your browser does not support the audio element.
 	</audio>
 	 
 	<button class="buttonMusicStyle buttonHover" ng-click="toggleMusic()">
-	<div ng-if="musicTrack==0">Music: Main Theme of Beloved</div>
-	 <div ng-if="musicTrack==1">Music: Fallacy's Theme</div>
-	 <div ng-if="musicTrack==2">Music: Dolour's Theme</div>
+	<div ng-if="musicTrack==0">BGM: Immola</div>
+	<div ng-if="musicTrack==1">Main Theme of Beloved</div>
+	 <div ng-if="musicTrack==2">Fallacy's Theme</div>
+	 
 	 
 	 <div ng-if="musicTrack==3">???</div>
 	</button>
@@ -39,7 +40,8 @@
 	<div ng-repeat="enemy in enemyData">
 		<div ng-if="enemyHasPos($index)" class="hoverImage charDiv" title="({{enemy[32]}}) {{enemy[33][0]}}: {{enemy[33][1]}}🚶  {{enemy[33][2]}}⛨" ng-click="toggleView($index)" ng-style="{top: determineY($index), left: determineX($index)}" id="enemy_{{$index}}">
 			<div class="charDiv" class="mapCharOffsetNone">
-				<img ng-src="{{enemy[44]}}" class="mapCharCentered">
+				<img ng-if="enemyHasMoved($index)" ng-src="{{enemy[44]}}" class="mapCharCentered grayscale">
+				<img ng-if="!enemyHasMoved($index)" ng-src="{{enemy[44]}}" class="mapCharCentered" >
 				<img ng-if="enemyHasNum($index) && enemyHpDraw($index)" ng-src="{{getEnemyNum($index)}}" class="enemyNum">
 				<img ng-if="enemyHasNum($index) && !enemyHpDraw($index)" ng-src="{{getEnemyNum($index)}}" class="enemyNum" style="top:0px">
 				<img ng-if="enemyHasStatus($index)" ng-src="{{getEnemyStatus($index)}}" class="enemyNum">
@@ -182,23 +184,23 @@
 		<!--Item Inventory-->
 		<div class="infoElement paleTan redText hoverTan enemyInventoryBoxPos" ng-mouseenter="eWpn1=true" ng-mouseleave="eWpn1=false" style="margin-top:5px">
 			<span class="indentedEWeaponIcon" ng-if="validEnemyWeapon($index,23)"><img ng-src="{{getEnemyWeaponClassIcon($index,23)}}"/></span>
-			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,23)}">{{enemy[23][0]}}</span>
+			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,23)}">{{filterItemName2($index, 23)}}</span>
 		</div>
 		<div class="infoElement paleTan redText hoverTan enemyInventoryBoxPos" ng-mouseenter="eWpn2=true" ng-mouseleave="eWpn2=false" style="margin-top:34px">
 			<span class="indentedEWeaponIcon" ng-if="validEnemyWeapon($index,24)"><img ng-src="{{getEnemyWeaponClassIcon($index,24)}}"/></span>
-			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,24)}">{{enemy[24][0]}}</span>
+			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,24)}">{{filterItemName2($index, 24)}}</span>
 		</div>
 		<div class="infoElement paleTan redText hoverTan enemyInventoryBoxPos" ng-mouseenter="eWpn3=true" ng-mouseleave="eWpn3=false" style="margin-top:63px">
 			<span class="indentedEWeaponIcon" ng-if="validEnemyWeapon($index,25)"><img ng-src="{{getEnemyWeaponClassIcon($index,25)}}"/></span>
-			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,25)}">{{enemy[25][0]}}</span>
+			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,25)}">{{filterItemName2($index, 25)}}</span>
 		</div>
 		<div class="infoElement paleTan redText hoverTan enemyInventoryBoxPos" ng-mouseenter="eWpn4=true" ng-mouseleave="eWpn4=false" style="margin-top:92px">
 			<span class="indentedEWeaponIcon" ng-if="validEnemyWeapon($index,26)"><img ng-src="{{getEnemyWeaponClassIcon($index,26)}}"/></span>
-			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,26)}">{{enemy[26][0]}}</span>
+			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,26)}">{{filterItemName2($index, 26)}}</span>
 		</div>
 		<div class="infoElement paleTan redText hoverTan enemyInventoryBoxPos" ng-mouseenter="eWpn5=true" ng-mouseleave="eWpn5=false" style="margin-top:121px">
 			<span class="indentedEWeaponIcon" ng-if="validEnemyWeapon($index,27)"><img ng-src="{{getEnemyWeaponClassIcon($index,27)}}"/></span>
-			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,27)}">{{enemy[27][0]}}</span>
+			<span class="indentedEnemyItem" ng-style="{color: determineItemColor($index,27)}">{{filterItemName2($index, 27)}}</span>
 		</div>
 		
 		<!--Experience-->

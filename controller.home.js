@@ -236,7 +236,6 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
         		else inc++;
         	}
     	}
-    	
     	//Toggle visibility
     	var id = 'viewInfo_' + index;
     	$scope[id] = !$scope[id];
@@ -356,6 +355,14 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     		return 0;
     	}
     	
+    };
+    
+    $scope.enemyHasMoved = function(index){
+    	if($scope.enemyData[index][32-1]==1){
+    		return 1;
+    	}
+    	else
+    		return 0;
     };
     
     $scope.determineHPColor = function(index){
@@ -593,6 +600,12 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	else return w.substring(0, w.indexOf("(")-1);
     };
     
+    $scope.filterItemName2 = function(enemy, weapon){
+    	var w = $scope.enemyData[enemy][weapon][0];
+    	if(w.indexOf("(D)") == -1) return w;
+    	else return w.substring(0, w.indexOf("(D)")-1);
+    };
+    
     $scope.filterItemUses = function(enemy, weapon){
     	var w = $scope.enemyData[enemy][weapon][0];
     	if(w.indexOf("(") == -1) return "-";
@@ -672,48 +685,60 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name.indexOf("(")!=-1){
     		name = name.substring(0,name.indexOf("(")-1);
     	}
-    	if(name.indexOf("wind")!=-1 || name == "Rexcalibur"){
+    	if(name == "Wind" || name == "Elwind" || name == "Arcwind" || name == "Rexcalibur"){
     		return "IMG/Items/type_tome_wind.png";
     	}
-    	if(name.indexOf("fire")!=-1 || name == "Bolganone"){
+    	if(name == "Fire" || name == "Elfire" || name == "Arcfire" || name == "Bolganone"){
     		return "IMG/Items/type_tome_fire.png";
     	}
-    	if(name.indexOf("thunder")!=-1 || name == "Thoron" || name == "Torden"){
+    	if(name == "Thunder" || name == "Elthunder" || name == "Arcthunder" || name == "Thoron" || name == "Torden"){
     		return "IMG/Items/type_tome_thunder.png";
     	}
-    	if(name.indexOf("freeze")!=-1 || name == "Nilflheim"){
+    	if(name == "Freeze" || name == "Elfreeze" || name == "Arcfreeze" ||  name == "Nilflheim"){
     		return "IMG/Items/type_tome_freeze.png";
     	}
-    	if(name.indexOf("dark")!=-1 || name == "Shadow Shot" || name == "Venom Shot"){
+    	if(name == "Shadow Shot" || name == "Venom Shot"){
     		return "IMG/Items/type_tome_dark.png";
     	}
-    	if(name.indexOf("light")!=-1 || name == "Nilflheim"){
+    	if(name == "Light"){
     		return "IMG/Items/type_tome_light.png";
     	}
     	
     	if(name == "Dagger" || name == "Throwing Sword" || name == "Kukri" || name == "Kodachi" || name == "Effervescence" || name == "Esurience"){
     		return "IMG/Items/type_sword_dagger.png";
     	}
-    	if(name.indexOf("blade")!=-1){
+    	if(name=="Stone Blade"||name=="Metal Blade"||name=="Ivory Blade"){
     		return "IMG/Items/type_sword_blade.png";
     	}
     	if(name == "Javelin" || name == "Short Spear" || name == "Spear" || name == "Nageyari"){
     		return "IMG/Items/type_lance_javelin.png";
     	}
-    	if(name.indexOf("greatlance")!=-1){
+    	if(name=="Stone Greatlance"||name=="Metal Greatlance"||name=="Ivory Greatlance"){
     		return "IMG/Items/type_lance_greatlance.png";
     	}
     	if(name == "Hatchet" || name == "Hand Axe" || name == "Short Axe" || name == "Tomahawk"){
     		return "IMG/Items/type_axe_hatchet.png";
     	}
-    	if(name.indexOf("poleaxe")!=-1){
-    		return "IMG/Items/type_lance_poleaxe.png";
+    	if(name=="Stone Poleaxe"||name=="Metal Poleaxe"||name=="Ivory Poleaxe"){
+    		return "IMG/Items/type_axe_poleaxe.png";
     	}
-    	if(name.indexOf("shortaxe")!=-1){
+    	if(name=="Wooden Shortbow"||name=="Stone Shortbow"||name=="Metal Shortbow"||name=="Ivory Shortbow"){
     		return "IMG/Items/type_bow_shortbow.png";
     	}
-    	if(name.indexOf("longaxe")!=-1){
+    	if(name=="Wooden Longbow"||name=="Stone Longbow"||name=="Metal Longbow"||name=="Ivory Longbow"){
     		return "IMG/Items/type_bow_longbow.png";
+    	}
+    	if(name == "Wooden Staff" || name == "Stone Staff" || name == "Metal Staff" || name == "Ivory Staff" || name == "Reaper Staff"){
+    		return "IMG/Items/type_staff_wooden.png";
+    	}
+    	if(name == "Energize" || name == "Shield" || name == "Enfeeble" || name == "Expose" || name == "Poison" || name == "Curse"){
+    		return "IMG/Items/type_staff_status.png";
+    	}
+    	if(name == "Restore" || name == "Unlock" || name == "Rescue" || name == "Warp" || name == "Hammerne" || name == "Vitae"){
+    		return "IMG/Items/type_staff_misc.png";
+    	}
+    	if(name == "Frost Bite"){
+    		return "IMG/Items/type_monster_frostbite.png";
     	}
     	
     	if(name == "Turkey"){
@@ -818,7 +843,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     //If it does, it returns that number
     $scope.getEnemyNum = function(index){
     	var name = $scope.enemyData[index][0];
-    	if(name == "Boss" || name == "Scheme" || name == "Slammer")
+    	if(name == "Boss" || name == "Scheme" || name == "Slam")
     		return "IMG/shield_boss.png";
     	name = name.substring(name.lastIndexOf(" ")+1, name.length);
     	return "IMG/num_" + name + ".png";
@@ -859,6 +884,14 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     		power +=1;
     	
     	var weapon = $scope.enemyData[index][23][1];
+    	var effect = $scope.enemyData[index][23][12];
+    	if(effect==28||effect==30){
+    		return power + parseInt($scope.enemyData[index][6]);
+    	}
+    	if(effect==29||effect==31){
+    		return power + parseInt($scope.enemyData[index][7]);
+    	}
+    	
     	if(weapon=="Tome"||weapon=="Talisman"||weapon=="Relic"||weapon=="Staff"){
     		//magical
     		return power + parseInt($scope.enemyData[index][7]);
