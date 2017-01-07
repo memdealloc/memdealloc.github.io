@@ -529,7 +529,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     
     $scope.formatItemRank = function(str){
     	
-    	if(str[1]=="Consumable" || str[1]=="Item"){
+    	if(str[1]=="Consumable" || str[1]=="Item"|| str[1]=="Equipment"){
     		return str[1];
     	}
     	else{
