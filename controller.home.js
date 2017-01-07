@@ -144,7 +144,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     //Returns true if the enemy has a coordinate on the map
     //Units in the back of a pair up should have a coordinate of ""
     $scope.enemyHasPos = function(index){
-    	if($scope.enemyData[index][33-1]=="Defeated"){
+    	if($scope.enemyData[index][33-1]=="Defeated" || $scope.enemyData[index][33-1]=="Not Deployed"){
     		return 2;
     	}
     	return $scope.enemyData[index][33-1].indexOf(",") != -1;
@@ -159,7 +159,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     //Returns true if the enemy at index is paired up
     $scope.enemyIsPaired = function(index){
     	var pair = $scope.enemyData[index][32];
-    	if(pair.indexOf(",") == -1 && pair.length > 0 && pair != "Defeated") return true;
+    	if(pair.indexOf(",") == -1 && pair.length > 0 && pair != "Defeated" && pair != "Not Deployed") return true;
     	
     	var name = $scope.enemyData[index][0];
     	for(var i = 0; i < $scope.enemyData.length; i++)
@@ -967,7 +967,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	var pos = $scope.enemyData[index][33-1];
     	if(index == 0) numDefeat = 0;
     	
-    	if(pos == "Defeated"){
+    	if(pos == "Defeated" || pos == "Not Deployed"){
     		
     		return (((((numDefeat-1)%30)+2)*16))-16 + "px";
     	}
@@ -984,7 +984,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     //position on the map
     $scope.determineY = function(index){
     	var pos = $scope.enemyData[index][33-1];
-    	if(pos == "Defeated"){
+    	if(pos == "Defeated" || pos == "Not Deployed"){
     		numDefeat +=1;
     		return (34+Math.floor((numDefeat-1)/30))*16-16+"px";
     	}
