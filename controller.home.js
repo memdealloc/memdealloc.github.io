@@ -741,6 +741,10 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     		return "IMG/Items/type_monster_frostbite.png";
     	}
     	
+    	if(name == "Parashu"){
+    		return "IMG/Items/type_axe_parashu.png";
+    	}
+    	
     	if(name == "Turkey"){
     		return "IMG/Items/item_turkey.png";
     	}
