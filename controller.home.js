@@ -348,7 +348,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     $scope.enemyHpDraw = function(index){
     	current = parseInt($scope.enemyData[index][5]);
     	total = parseInt($scope.enemyData[index][4]);
-    	if(current<total){
+    	if(current<total && current > 0){
     		return 1;
     	}
     	else{
