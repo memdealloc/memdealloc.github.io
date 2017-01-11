@@ -308,6 +308,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	for(var i = 0;i < classStats.length;i++){
     		if(classStats[i][0]==name){
     			temp =  [characterData[id][3], classStats[i][34]];
+    			var realname = characterData[id][0];
     			var weaknesses = classStats[i][24];
     			var weakList = [];
     			
@@ -316,6 +317,9 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     			}
     			if(characterData[id][1] == "Loveless"){
     				weakList.push("Loveless");
+    			}
+    			if(realname == "Devastator"){
+    				weakList.push("Reptile");
     			}
 
     			while(weaknesses.indexOf(",")!=-1){

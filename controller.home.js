@@ -740,7 +740,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Reaper Axes"){
     		return "IMG/Items/type_axe_reaper.png";
     	}
-    	if(name == "Frost Bite"){
+    	if(name == "Devastation"){
     		return "IMG/Items/type_monster_frostbite.png";
     	}
     	
@@ -830,13 +830,13 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     
     $scope.enemyHasStatus = function(index){
     	var status = $scope.enemyData[index][29][0];
-    	if(status != "None" && status != "Emerging" && status != "Defeated") return true;
+    	if(status != "None" && status != "Emerging" && status != "Marked" && status != "Defeated") return true;
     	else return false;
     };
     
     $scope.enemyHasStatusU = function(index){
     	var status = $scope.enemyData[index][29][0];
-    	if(status != "None" && status != "Emerging" && status != "Defeated") return $scope.enemyData[index][30];
+    	if(status != "None" && status != "Emerging" && status != "Marked" && status != "Defeated") return $scope.enemyData[index][30];
     	else return 0;
     };
     
