@@ -737,6 +737,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Restore" || name == "Unlock" || name == "Rescue" || name == "Warp" || name == "Hammerne" || name == "Vitae"){
     		return "IMG/Items/type_staff_misc.png";
     	}
+    	if(name == "Reaper Axes"){
+    		return "IMG/Items/type_axe_reaper.png";
+    	}
     	if(name == "Frost Bite"){
     		return "IMG/Items/type_monster_frostbite.png";
     	}
