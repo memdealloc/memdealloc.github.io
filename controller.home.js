@@ -3,6 +3,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     $scope.columns = ["1"];
     $scope.showGrid = 1;
     $scope.musicTrack = 0;
+    $scope.numSongs = 2;
     var numDefeat = 0;
     var rowTimer = $interval(calcNumRows, 250, 20); //attempt to get rows 20 times at 250 ms intervals (total run: 5 sec)
     var colTimer = $interval(calcNumColumns, 250, 20);
@@ -30,7 +31,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     };
     
     $scope.toggleMusic = function() {
-    	if($scope.musicTrack == 2){
+    	if($scope.musicTrack == $scope.numSongs-1){
     		$scope.musicTrack = 0;
     	}
     	else{
@@ -744,7 +745,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     		return "IMG/Items/type_monster_frostbite.png";
     	}
     	
-    	if(name == "Parashu"){
+    	if(name == "Parashu" || name == "Blighted Parashu"){
     		return "IMG/Items/type_axe_parashu.png";
     	}
     	
@@ -836,7 +837,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     
     $scope.enemyHasStatusU = function(index){
     	var status = $scope.enemyData[index][29][0];
-    	if(status != "None" && status != "Emerging" && status != "Marked" && status != "Defeated") return $scope.enemyData[index][30];
+    	if(status != "None" && status != "Defeated") return $scope.enemyData[index][30];
     	else return 0;
     };
     
