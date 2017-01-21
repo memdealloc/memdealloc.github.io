@@ -84,7 +84,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
 	    	case 3: return "They see me loading..."; break;
 	    	case 4: return "Installing virus.exe..."; break;
 	    	case 5: return "ERROR: 404     (jk)"; break;
-	    	case 6: return "Handing enemies pointy weapons..."; break;
+	    	case 6: return "RIP In Peace, Mercenary 04..."; break;
 	    	case 7: return "Soon (TM)"; break;
 	    	case 8: return "Fixing stuff IronPegasus broke..."; break;
 	    	case 9: return "Breaking the game balance even more..."; break;
