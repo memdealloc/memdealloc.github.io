@@ -12,7 +12,7 @@
 	<img class="absolutePos" ng-src="{{getTimeOut()}}" style="top:512px">
 	
 	<audio id = 'audio' controls loop>
-		<source ng-if="musicTrack==0" src="MUS/themeDevastator.mp3" type="audio/mpeg">
+		<source ng-if="musicTrack==0" src="MUS/themeMina.mp3" type="audio/mpeg">
 		<source ng-if="musicTrack==1" src="MUS/themeBGM1.mp3" type="audio/mpeg">
   		<source ng-if="musicTrack==2" src="MUS/themeMain.mp3" type="audio/mpeg">
   		
@@ -21,7 +21,7 @@
 	</audio>
 	 
 	<button class="buttonMusicStyle buttonHover" ng-click="toggleMusic()">
-	<div ng-if="musicTrack==0">Versus Devastator</div>
+	<div ng-if="musicTrack==0">Theme: Mina</div>
 	<div ng-if="musicTrack==1">BGM: Immola</div>
 	<div ng-if="musicTrack==2">Main Theme of Beloved</div>
 	 
