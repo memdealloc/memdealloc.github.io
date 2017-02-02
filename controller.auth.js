@@ -60,24 +60,10 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     function pickLoadingIcon(){
     	
     	return "IMG/loadingImage.gif";
-    	/*var rand = Math.floor((Math.random() * 11) + 1); //generate a number between one and twelve
-    	switch(rand){
-	    	case 1: return "IMG/gif_1.gif"; break;
-	    	case 2: return "IMG/gif_2.gif"; break;
-	    	case 3: return "IMG/gif_3.gif"; break;
-	    	case 4: return "IMG/gif_4.gif"; break;
-	    	case 5: return "IMG/gif_5.gif"; break;
-	    	case 6: return "IMG/gif_6.gif"; break;
-	    	case 7: return "IMG/gif_7.gif"; break;
-	    	case 8: return "IMG/gif_9.gif"; break;
-	    	case 9: return "IMG/gif_10.gif"; break;
-	    	case 10: return "IMG/gif_11.gif"; break;
-	    	case 11: return "IMG/gif_12.gif"; break;
-    	}*/
     };
     
     function pickLoadingText(){
-    	var rand = Math.floor((Math.random() * 15) + 1);
+    	var rand = Math.floor((Math.random() * 17) + 1);
     	switch(rand){
 	    	case 1: return "Loading map data..."; break;
 	    	case 2: return "Trying to not crash..."; break;
@@ -94,6 +80,8 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
 	    	case 13: return "Administering hug to Raphael..."; break;
 	    	case 14: return "Taping Soldier 01 back together..."; break;
 	    	case 15: return "Attacking defenseless soldiers..."; break;
+	    	case 16: return "Blaming Deme for Dea's mistakes..."; break;
+	    	case 17: return "Scouring the ground for more Weeds..."; break;
 	    	
     	}
     };

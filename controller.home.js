@@ -752,6 +752,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Turkey"){
     		return "IMG/Items/item_turkey.png";
     	}
+    	if(name == "Weed"){
+    		return "IMG/Items/item_weed.png";
+    	}
     	if(name == "Door Key" || name == "Chest Key" || name == "Master Key"){
     		return "IMG/Items/type_key.png";
     	}
@@ -1031,7 +1034,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	else if(aff == "Loveless"){
     		return "#9D009D";
     	}
-    	else if(aff == "Whimsy" || aff == "Cupidity"){
+    	else if(aff == "Whimsy" || aff == "Cupidity" || aff == "Neutral"){
     		return "#089000";
     	}
     	else if(aff == "Anna is a bum"){
