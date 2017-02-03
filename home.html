@@ -47,7 +47,7 @@
 				<img ng-if="enemyHasStatus($index)" ng-src="{{getEnemyStatus($index)}}" class="enemyNum">
 			</div>
 			<div ng-if="enemyHpDraw($index)" class="healthBarBack"></div>
-			<div ng-if="enemyHpDraw($index)" class="healthBarFront" ng-style="{width:(1+(enemy[5]/enemy[4])*13)+'px','background-color': determineHPColor($index)}"></div>
+			<div ng-if="enemyHpDraw($index)" class="healthBarFront" ng-style="{width:(1+(enemy[5]/enemy[4])*12)+'px','background-color': determineHPColor($index)}"></div>
 			<div ng-if="enemyHpDraw($index)" class="healthBarBorder"></div>
 			<div ng-if="enemyIsPaired($index) && enemyHpDraw($index)" class="pairUpIcon"><img src="IMG/shield_pairup.png"></div>
 			<div ng-if="enemyIsPaired($index) && !enemyHpDraw($index)" class="pairUpIcon"><img src="IMG/shield_pairup.png" class="enemyNum" style="top:3px"></div>
