@@ -744,7 +744,12 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Devastation"){
     		return "IMG/Items/type_monster_frostbite.png";
     	}
-    	
+    	if(name == "Obelisk"){
+    		return "IMG/Items/type_sword_obelisk.png";
+    	}
+    	if(name == "Fiore"){
+    		return "IMG/Items/type_relic_fiore.png";
+    	}
     	if(name == "Parashu" || name == "Blighted Parashu"){
     		return "IMG/Items/type_axe_parashu.png";
     	}
