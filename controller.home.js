@@ -747,7 +747,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Obelisk"){
     		return "IMG/Items/type_sword_obelisk.png";
     	}
-    	if(name == "Fiore"){
+    	if(name.indexOf("Fior")!=-1){
     		return "IMG/Items/type_relic_fiore.png";
     	}
     	if(name == "Parashu" || name == "Blighted Parashu"){
@@ -757,7 +757,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Turkey"){
     		return "IMG/Items/item_turkey.png";
     	}
-    	if(name == "Weed"){
+    	if(name == "Weed" || name == "Not Weed"){
     		return "IMG/Items/item_weed.png";
     	}
     	if(name == "Door Key" || name == "Chest Key" || name == "Master Key"){
