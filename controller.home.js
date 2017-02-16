@@ -757,6 +757,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Turkey"){
     		return "IMG/Items/item_turkey.png";
     	}
+    	if(name == "Musty Tome" || name == "Unfinished Tome" || name == "Nearly Finished Tome"){
+    		return "IMG/Items/item_mustytome.png";
+    	}
     	if(name == "Weed" || name == "Not Weed"){
     		return "IMG/Items/item_weed.png";
     	}
