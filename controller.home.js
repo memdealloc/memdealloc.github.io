@@ -732,6 +732,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Wooden Staff" || name == "Stone Staff" || name == "Metal Staff" || name == "Ivory Staff" || name == "Reaper Staff"){
     		return "IMG/Items/type_staff_wooden.png";
     	}
+    	if(name == "Stone Staff"){
+    		return "IMG/Items/type_staff_stone.png";
+    	}
     	if(name == "Energize" || name == "Shield" || name == "Enfeeble" || name == "Expose" || name == "Poison" || name == "Curse"){
     		return "IMG/Items/type_staff_status.png";
     	}
@@ -752,6 +755,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	}
     	if(name == "Parashu" || name == "Blighted Parashu"){
     		return "IMG/Items/type_axe_parashu.png";
+    	}
+    	if(name == "Exacerbate"){
+    		return "IMG/Items/type_staff_exacerbate.png";
     	}
     	
     	if(name == "Turkey"){
