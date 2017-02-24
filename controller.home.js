@@ -686,16 +686,16 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name.indexOf("(")!=-1){
     		name = name.substring(0,name.indexOf("(")-1);
     	}
-    	if(name == "Wind" || name == "Elwind" || name == "Arcwind" || name == "Rexcalibur"){
+    	if(name == "Wind" || name == "Elwind" || name == "Arcwind" || name == "Rexcalibur" || name == "Magnum Gale"){
     		return "IMG/Items/type_tome_wind.png";
     	}
-    	if(name == "Fire" || name == "Elfire" || name == "Arcfire" || name == "Bolganone"){
+    	if(name == "Fire" || name == "Elfire" || name == "Arcfire" || name == "Bolganone" || name == "Magnum Flare"){
     		return "IMG/Items/type_tome_fire.png";
     	}
-    	if(name == "Thunder" || name == "Elthunder" || name == "Arcthunder" || name == "Thoron" || name == "Torden"){
+    	if(name == "Thunder" || name == "Elthunder" || name == "Arcthunder" || name == "Thoron" || name == "Torden" || name == "Magnum Bolt"){
     		return "IMG/Items/type_tome_thunder.png";
     	}
-    	if(name == "Freeze" || name == "Elfreeze" || name == "Arcfreeze" ||  name == "Nilflheim"){
+    	if(name == "Freeze" || name == "Elfreeze" || name == "Arcfreeze" ||  name == "Nilflheim" || name == "Magnum Chill" || name == "Akull"){
     		return "IMG/Items/type_tome_freeze.png";
     	}
     	if(name == "Shadow Shot" || name == "Venom Shot"){
@@ -746,6 +746,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	}
     	if(name == "Devastation"){
     		return "IMG/Items/type_monster_frostbite.png";
+    	}
+    	if(name == "Evisceration"){
+    		return "IMG/Items/type_monster_feather.png";
     	}
     	if(name == "Obelisk"){
     		return "IMG/Items/type_sword_obelisk.png";
@@ -868,7 +871,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     //If it does, it returns that number
     $scope.getEnemyNum = function(index){
     	var name = $scope.enemyData[index][0];
-    	if(name == "Boss" || name == "Scheme" || name == "Slam")
+    	if(name == "Boss" || name == "Enmity")
     		return "IMG/shield_boss.png";
     	name = name.substring(name.lastIndexOf(" ")+1, name.length);
     	return "IMG/num_" + name + ".png";
@@ -1036,19 +1039,19 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     $scope.determineInfoColor = function(index){
     	var aff = $scope.enemyData[index][1];
     	
-    	if(aff == "Immolan Guard"){
+    	if(aff == "Immolan Guard" || aff == "Gershom"){
     		return "#E01616";
     	}
     	else if(aff == "Environment"){
     		return "#FFFFFF";
     	}
-    	else if(aff == "Reaper"){
+    	else if(aff == "Reaper" || aff == "Nadir Reaper" || aff == "Apex Reaper"){
     		return "#E900E9";
     	}
     	else if(aff == "Loveless"){
     		return "#9D009D";
     	}
-    	else if(aff == "Whimsy" || aff == "Cupidity" || aff == "Neutral"){
+    	else if(aff == "Whimsy" || aff == "Cupidity" || aff == "Neutral" || aff == "Prisoner"){
     		return "#089000";
     	}
     	else if(aff == "Anna is a bum"){

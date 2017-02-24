@@ -1,5 +1,6 @@
 <div id="dropArea" class="mapBox mainBackground">
 
+	<img id="map" class="absolutePos" ng-src="IMG/chasm.gif">
 	<img id="map" class="absolutePos" ng-src="{{map}}">
 	
 	<!--Draw tile names-->
@@ -12,8 +13,8 @@
 	<img class="absolutePos" ng-src="{{getTimeOut()}}" style="top:512px">
 	
 	<audio id = 'audio' controls loop>
-		<source ng-if="musicTrack==0" src="MUS/themeGershom1.mp3" type="audio/mpeg">
-		<source ng-if="musicTrack==1" src="MUS/themeMissionComplete.mp3" type="audio/mpeg">
+		<source ng-if="musicTrack==0" src="MUS/themeViaduct.mp3" type="audio/mpeg">
+		<source ng-if="musicTrack==1" src="MUS/themeBattle.mp3" type="audio/mpeg">
   		<source ng-if="musicTrack==2" src="MUS/themeMain.mp3" type="audio/mpeg">
   		
   		
@@ -21,9 +22,9 @@
 	</audio>
 	 
 	<button class="buttonMusicStyle buttonHover" ng-click="toggleMusic()">
-	<div ng-if="musicTrack==0">Gershom: City On The River</div>
-	<div ng-if="musicTrack==1">~MISSION COMPLETE!~ DO THE VICTORY DANCE!</div>
-	<div ng-if="musicTrack==2">Main Theme of Beloved</div>
+	<div ng-if="musicTrack==0">Viaduct: The Bridge Over Infinity Itself</div>
+	<div ng-if="musicTrack==1">Battle Theme: Break Through Adversity</div>
+	<div ng-if="musicTrack==2">Main Theme: Those Who Would End The World</div>
 	 
 	 
 	 
@@ -44,6 +45,13 @@
 			<div class="charDiv" class="mapCharOffsetNone">
 				<img ng-if="enemyHasMoved($index)" ng-src="{{enemy[44]}}" class="mapCharCentered grayscale">
 				<img ng-if="!enemyHasMoved($index)" ng-src="{{enemy[44]}}" class="mapCharCentered" >
+			</div>
+		</div>
+	</div>
+	
+	<div ng-repeat="enemy in enemyData">
+		<div ng-if="enemyHasPos($index)" class="hoverImage charDiv" title="({{enemy[32]}}) {{enemy[33][0]}}: {{enemy[33][1]}}🚶  {{enemy[33][2]}}⛨" ng-click="toggleView($index)" ng-style="{top: determineY($index), left: determineX($index)}" id="enemy_{{$index}}">
+			<div class="charDiv" class="mapCharOffsetNone">
 				<img ng-if="enemyHasNum($index) && enemyHpDraw($index)" ng-src="{{getEnemyNum($index)}}" class="enemyNum">
 				<img ng-if="enemyHasNum($index) && !enemyHpDraw($index)" ng-src="{{getEnemyNum($index)}}" class="enemyNum" style="top:0px">
 				<img ng-if="enemyHasStatus($index)" ng-src="{{getEnemyStatus($index)}}" class="enemyNum">

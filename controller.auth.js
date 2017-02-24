@@ -46,7 +46,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
             spreadsheetId: sheetId,
             majorDimension: "COLUMNS",
             valueRenderOption: "FORMULA",
-            range: 'Current Map!A1',
+            range: 'Current Map!A6',
           }).then(function(response) {
         	  var url = response.result.values[0][0];
         	  updateProgressBar();
@@ -300,7 +300,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     			var weaknesses = classStats[i][24];
     			var weakList = [];
     			
-    			if(characterData[id][1] == "Reaper"){
+    			if(characterData[id][1] == "Reaper" || characterData[id][1] == "Apex Reaper" || characterData[id][1] == "Nadir Reaper"){
     				weakList.push("Reaper");
     			}
     			if(characterData[id][1] == "Loveless"){
@@ -308,6 +308,9 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     			}
     			if(realname == "Devastator"){
     				weakList.push("Reptile");
+    			}
+    			if(realname == "Eviscerator"){
+    				weakList.push("Flying");
     			}
 
     			while(weaknesses.indexOf(",")!=-1){
