@@ -704,6 +704,14 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Light"){
     		return "IMG/Items/type_tome_light.png";
     	}
+    	if(name == "Brine"){
+    		return "IMG/Items/type_tome_water.png";
+    	}
+    	if(name == "Earthquake"){
+    		return "IMG/Items/type_tome_earth.png";
+    	}
+    	
+    	
     	
     	if(name == "Dagger" || name == "Throwing Sword" || name == "Kukri" || name == "Kodachi" || name == "Effervescence" || name == "Esurience"){
     		return "IMG/Items/type_sword_dagger.png";
