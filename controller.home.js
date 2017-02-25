@@ -770,6 +770,19 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Exacerbate"){
     		return "IMG/Items/type_staff_exacerbate.png";
     	}
+    	if(name == "Bloom Trophy"){
+    		return "IMG/Items/type_none_trophy.png";
+    	}
+    	if(name == "Calling Card" || name == "Death Arcana"){
+    		return "IMG/Items/type_none_card.png";
+    	}
+    	
+    	if(name == "Dromaero Egg" || name == "Large Dromaero Egg"){
+    		return "IMG/Items/type_item_egg.png";
+    	}
+    	if(name.indexOf("Saeptum")!=-1){
+    		return "IMG/Items/type_equipment_saeptum.png";
+    	}
     	
     	if(name == "Turkey"){
     		return "IMG/Items/item_turkey.png";
