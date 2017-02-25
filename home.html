@@ -40,18 +40,12 @@
 	</button>
 	
 	<!--Draw enemies-->
+	
 	<div ng-repeat="enemy in enemyData">
 		<div ng-if="enemyHasPos($index)" class="hoverImage charDiv" title="({{enemy[32]}}) {{enemy[33][0]}}: {{enemy[33][1]}}🚶  {{enemy[33][2]}}⛨" ng-click="toggleView($index)" ng-style="{top: determineY($index), left: determineX($index)}" id="enemy_{{$index}}">
 			<div class="charDiv" class="mapCharOffsetNone">
 				<img ng-if="enemyHasMoved($index)" ng-src="{{enemy[44]}}" class="mapCharCentered grayscale">
 				<img ng-if="!enemyHasMoved($index)" ng-src="{{enemy[44]}}" class="mapCharCentered" >
-			</div>
-		</div>
-	</div>
-	
-	<div ng-repeat="enemy in enemyData">
-		<div ng-if="enemyHasPos($index)" class="hoverImage charDiv" title="({{enemy[32]}}) {{enemy[33][0]}}: {{enemy[33][1]}}🚶  {{enemy[33][2]}}⛨" ng-click="toggleView($index)" ng-style="{top: determineY($index), left: determineX($index)}" id="enemy_{{$index}}">
-			<div class="charDiv" class="mapCharOffsetNone">
 				<img ng-if="enemyHasNum($index) && enemyHpDraw($index)" ng-src="{{getEnemyNum($index)}}" class="enemyNum">
 				<img ng-if="enemyHasNum($index) && !enemyHpDraw($index)" ng-src="{{getEnemyNum($index)}}" class="enemyNum" style="top:0px">
 				<img ng-if="enemyHasStatus($index)" ng-src="{{getEnemyStatus($index)}}" class="enemyNum">

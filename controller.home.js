@@ -761,6 +761,12 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Obelisk"){
     		return "IMG/Items/type_sword_obelisk.png";
     	}
+    	if(name == "Highlander"){
+    		return "IMG/Items/type_sword_highlander.png";
+    	}
+    	if(name == "Spellfoil"){
+    		return "IMG/Items/type_sword_spellfoil.png";
+    	}
     	if(name.indexOf("Fior")!=-1){
     		return "IMG/Items/type_relic_fiore.png";
     	}
