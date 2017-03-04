@@ -743,6 +743,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Stone Staff"){
     		return "IMG/Items/type_staff_stone.png";
     	}
+    	if(name == "Wooden Staff" || name == "Stone Staff" || name == "Metal Staff" || name == "Ivory Staff" || name == "Reaper Staff"){
+    		return "IMG/Items/type_staff_wooden.png";
+    	}
     	if(name == "Energize" || name == "Shield" || name == "Enfeeble" || name == "Expose" || name == "Poison" || name == "Curse"){
     		return "IMG/Items/type_staff_status.png";
     	}
@@ -1071,6 +1074,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	}
     	else if(aff == "Environment"){
     		return "#FFFFFF";
+    	}
+    	else if(aff == "Belenus"){
+    		return "#FF6600";
     	}
     	else if(aff == "Reaper" || aff == "Nadir Reaper" || aff == "Apex Reaper"){
     		return "#E900E9";
