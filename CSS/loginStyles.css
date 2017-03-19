@@ -57,9 +57,24 @@
 
 .authButton{
 	position: relative;
-	width: 100px;
+	width: 110px;
 	height: 35px;
 	left: 50%;
+	margin-left: -50px;
+	margin-top: -5px;
+ 	border-radius: 10px;
+ 	border: 0px;
+ 	box-shadow: none;
+ 	background-color: #000000;
+ 	color: white;
+}
+
+.authButton2{
+	position: absolute;
+	left: 50%;
+	top: 92%;
+	width: 110px;
+	height: 35px;
 	margin-left: -50px;
 	margin-top: -5px;
  	border-radius: 10px;
@@ -72,6 +87,10 @@
 .authButton:hover{
 	background-color: #ff0000;
 	cursor: pointer;
+}
+
+.authButton2:hover{
+
 }
 
 progress{

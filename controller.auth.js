@@ -30,31 +30,47 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     };*/
     
     //Initiate auth flow in response to user clicking authorize button.
-    $scope.loadAPI = function(event) {
+    $scope.loadAPI = function(event,type) {
+    	
     	gapi.client.init({
     		'apiKey': id, 
     		'discoveryDocs': ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
     	}).then(function(){
     		authorizeDiv.style.display = 'none';
     		loadingDiv.style.display = 'inline';
-    		fetchMapURL();
+    		fetchMapURL(type);
     	});
     };
     
-    function fetchMapURL(){
-    	gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: sheetId,
-            majorDimension: "COLUMNS",
-            valueRenderOption: "FORMULA",
-            range: 'Current Map!A6',
-          }).then(function(response) {
-        	  var url = response.result.values[0][0];
-        	  updateProgressBar();
-        	  DataService.setMap(processImgUrl(url));
-        	  //updateProgressBar(); //update progress bar
-        	  fetchCharacterData();
-          });
-    	
+    function fetchMapURL(type){
+    	if(type==1){
+	    	gapi.client.sheets.spreadsheets.values.get({
+	            spreadsheetId: sheetId,
+	            majorDimension: "COLUMNS",
+	            valueRenderOption: "FORMULA",
+	            range: 'Current Map!A6',
+	          }).then(function(response) {
+	        	  var url = response.result.values[0][0];
+	        	  updateProgressBar();
+	        	  DataService.setMap(processImgUrl(url));
+	        	  //updateProgressBar(); //update progress bar
+	        	  fetchCharacterData(type);
+	          });
+    	}
+    	else{
+    		gapi.client.sheets.spreadsheets.values.get({
+	            spreadsheetId: sheetId,
+	            majorDimension: "COLUMNS",
+	            valueRenderOption: "FORMULA",
+	            range: 'Current Map!A6',
+	          }).then(function(response) {
+	        	  var url = response.result.values[0][0];
+	        	  updateProgressBar();
+	        	  DataService.setMap(processImgUrl(url));
+	        	  //updateProgressBar(); //update progress bar
+	        	  fetchCharacterData(type);
+	          });
+    	}
     };
     
     function pickLoadingIcon(){
@@ -87,58 +103,97 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     };
 
     //Fetch whole formatted spreadsheet
-    function fetchCharacterData() {
-      gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: sheetId,
-        majorDimension: "COLUMNS",
-        range: 'Stats!A1:44',
-      }).then(function(response) {
-    	 characterData = response.result.values;
-    	 updateProgressBar();
-    	 fetchCharacterBlurb();
-      });
+    function fetchCharacterData(type) {
+    	if(type==1){
+	      gapi.client.sheets.spreadsheets.values.get({
+	        spreadsheetId: sheetId,
+	        majorDimension: "COLUMNS",
+	        range: 'Stats!A1:44',
+	      }).then(function(response) {
+	    	 characterData = response.result.values;
+	    	 updateProgressBar();
+	      	fetchCharacterBlurb(type);
+	      });
+    	}
+    	else{
+    	      gapi.client.sheets.spreadsheets.values.get({
+    	          spreadsheetId: sheetId,
+    	          majorDimension: "COLUMNS",
+    	          range: 'Stats!B1:44',
+    	        }).then(function(response) {
+    	      	 characterData = response.result.values;
+    	      	updateProgressBar();
+    	     	fetchCharacterBlurb(type);
+    	      });
+    	}
+
     };
     
-    function fetchCharacterBlurb() {
-        gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: sheetId,
-          majorDimension: "COLUMNS",
-          range: 'Stats!A105:105',
-        }).then(function(response) {
-         blurbs = response.result.values;
-      	 updateProgressBar(); //update progress bar
-      	 fetchWeaponIndex();
-        });
+    function fetchCharacterBlurb(type) {
+    	if(type==1){
+	        gapi.client.sheets.spreadsheets.values.get({
+	          spreadsheetId: sheetId,
+	          majorDimension: "COLUMNS",
+	          range: 'Stats!A105:105',
+	        }).then(function(response) {
+	         blurbs = response.result.values;
+	      	 updateProgressBar(); //update progress bar
+	      	 fetchWeaponIndex(type);
+	        });
+    	}
+    	else{
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: sheetId,
+                majorDimension: "COLUMNS",
+                range: 'Stats!A105:105',
+              }).then(function(response) {
+               blurbs = response.result.values;
+            	 updateProgressBar(); //update progress bar
+            	 fetchWeaponIndex(type);
+              });
+    	}
       };
     
-    function fetchWeaponIndex(){
+    function fetchWeaponIndex(type){
   	  //Fetch weapon information sheet
   	  gapi.client.sheets.spreadsheets.values.get({
          spreadsheetId: sheetId,
          majorDimension: "ROWS",
-         range: 'Weapon Index!A2:M',
+         range: 'Item Index!A2:M',
       }).then(function(response) {
     	  wIndex = response.result.values;
 	      	updateProgressBar(); //update progress bar
-	      fetchTerrainIndex();
+	      fetchTerrainIndex(type);
       });
     };
     
-    function fetchTerrainIndex(){
+    function fetchTerrainIndex(type){
     	  //Fetch weapon information sheet
-    	  gapi.client.sheets.spreadsheets.values.get({
-           spreadsheetId: sheetId,
-           majorDimension: "ROWS",
-           range: 'Terrain Chart!A2:K',
-        }).then(function(response) {
-      	  iTerrain = response.result.values;
-  	      	updateProgressBar(); //update progress bar
-  	      fetchSkillInfo();
-        });
+    	if(type==1){
+	    	  gapi.client.sheets.spreadsheets.values.get({
+	           spreadsheetId: sheetId,
+	           majorDimension: "ROWS",
+	           range: 'Terrain Chart!A2:K',
+	        }).then(function(response) {
+	      	  iTerrain = response.result.values;
+	  	      	updateProgressBar(); //update progress bar
+	  	      fetchSkillInfo(type);
+	        });
+    	}else{
+	    	  gapi.client.sheets.spreadsheets.values.get({
+		           spreadsheetId: sheetId,
+		           majorDimension: "ROWS",
+		           range: 'Terrain Chart!A2:K',
+		        }).then(function(response) {
+		      	  iTerrain = response.result.values;
+		  	      	updateProgressBar(); //update progress bar
+		  	      fetchSkillInfo(type);
+		        });
+    	}
       };
     
     //Fetch skills/descriptions for each character and append them
-    function fetchSkillInfo(){
+    function fetchSkillInfo(type){
     	//Fetch skill names for each character
     	gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: sheetId,
@@ -147,12 +202,12 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
           }).then(function(response) {
         	  charSkills = response.result.values;
         	  	updateProgressBar(); //update progress bar
-        	  fetchSkillDesc();
+        	  fetchSkillDesc(type);
           });
     };
     
     //Fetch normal skills and their matching descriptions
-    function fetchSkillDesc(){
+    function fetchSkillDesc(type){
   	  gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: sheetId,
             majorDimension: "ROWS",
@@ -160,38 +215,66 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
           }).then(function(response) {
           	 skillDescriptions = response.result.values;
           	 	updateProgressBar(); //update progress bar
-          	fetchPlayerImageData();
+          	fetchPlayerImageData(type);
           });
     };
     
     //Fetch image URLs and append them to characterData
-    function fetchPlayerImageData(){
-    	gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: sheetId,
-            majorDimension: "ROWS",
-            valueRenderOption: "FORMULA",
-            range: 'Player Stats!B3:3',
-        }).then(function(response) {
-        	charImages = response.result.values[0];
-         		updateProgressBar(); //update progress bar
-         	fetchEnemyImageData();
-        });
+    function fetchPlayerImageData(type){
+    	if(type==1){
+	    	gapi.client.sheets.spreadsheets.values.get({
+	            spreadsheetId: sheetId,
+	            majorDimension: "ROWS",
+	            valueRenderOption: "FORMULA",
+	            range: 'Player Stats!B3:3',
+	        }).then(function(response) {
+	        	charImages = response.result.values[0];
+	         		updateProgressBar(); //update progress bar
+	         	fetchEnemyImageData(type);
+	        });
+    	}
+    	else{
+    		gapi.client.sheets.spreadsheets.values.get({
+	            spreadsheetId: sheetId,
+	            majorDimension: "ROWS",
+	            valueRenderOption: "FORMULA",
+	            range: 'Player Stats!B3:3',
+	        }).then(function(response) {
+	        	charImages = response.result.values[0];
+	         		updateProgressBar(); //update progress bar
+	         	fetchEnemyImageData(type);
+	        });
+    	}
     };
     
-    function fetchEnemyImageData(){
-    	gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: sheetId,
-            majorDimension: "ROWS",
-            valueRenderOption: "FORMULA",
-            range: 'Enemy Stats!B3:3',
-        }).then(function(response) {
-        	charImages = charImages.concat(response.result.values[0]);
-         		updateProgressBar(); //update progress bar
-         	fetchClassData();
-        });
+    function fetchEnemyImageData(type){
+    	if(type==1){
+	    	gapi.client.sheets.spreadsheets.values.get({
+	            spreadsheetId: sheetId,
+	            majorDimension: "ROWS",
+	            valueRenderOption: "FORMULA",
+	            range: 'Enemy Stats!B3:3',
+	        }).then(function(response) {
+	        	charImages = charImages.concat(response.result.values[0]);
+	         		updateProgressBar(); //update progress bar
+	         	fetchClassData(type);
+	        });
+    	}
+    	else{
+        	gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: sheetId,
+                majorDimension: "ROWS",
+                valueRenderOption: "FORMULA",
+                range: 'Enemy Stats!B3:3',
+            }).then(function(response) {
+            	charImages = charImages.concat(response.result.values[0]);
+             		updateProgressBar(); //update progress bar
+             	fetchClassData(type);
+            });
+    	}
     };
     
-    function fetchClassData(){
+    function fetchClassData(type){
     	gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: sheetId,
             majorDimension: "ROWS",
@@ -200,49 +283,76 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
         }).then(function(response) {
         	classStats = response.result.values;
          	updateProgressBar(); //update progress bar
-         	fetchTerrainChart();
+         	fetchTerrainChart(type);
         });
     };
     
-    function fetchTerrainChart(){
+    function fetchTerrainChart(type){
     	var data = "";
     	  //Fetch terrain information sheet
-    	  gapi.client.sheets.spreadsheets.values.get({
-           spreadsheetId: sheetId,
-           majorDimension: "ROWS",
-           range: 'Terrain Locations!A2:B',
-        }).then(function(response) {
-      	  terrain = response.result.values;
-      	  
-      	  //Initialize terrianData with "Plain" for all cells
-	      for(var a = 0;a <= 32;a++){
-	    	terrainData.push([]);
-			for(var b = 0;b <= 32;b++)
-				terrainData[a].push(["Plain","0","0"]);
-	      }
-      	  
-      	  for(var i = 0;i < terrain.length;i++){
-    		var tempColumn = parseInt(terrain[i][0].substring(0,terrain[i][0].indexOf(",")));
-    		var tempRow = parseInt(terrain[i][0].substring(terrain[i][0].indexOf(",")+1,terrain.length));
-    		
-        	for(var h = 0; h < iTerrain.length; h++){
-        		if(iTerrain[h][0] == terrain[i][1]){
-        			var j = h;
-        		}
-        	}
-        	
-    		//if(tempColumn <= 32 && tempRow <= 32)
-    			terrainData[tempColumn][tempRow] = [terrain[i][1],iTerrain[j][1], iTerrain[j][2]];
-    		
-      	  }
-      	  
-	      DataService.setTerrain(terrainData);
-  	      updateProgressBar(); //update progress bar
-  	      fetchStatusData();
-        });
+    	if(type==1){
+	    	  gapi.client.sheets.spreadsheets.values.get({
+	           spreadsheetId: sheetId,
+	           majorDimension: "ROWS",
+	           range: 'Terrain Locations!A2:B',
+	        }).then(function(response) {
+	      	  terrain = response.result.values;
+	      	  
+	      	  //Initialize terrianData with "Plain" for all cells
+		      for(var a = 0;a <= 32;a++){
+		    	terrainData.push([]);
+				for(var b = 0;b <= 32;b++)
+					terrainData[a].push(["Plain","0","0"]);
+		      }
+	      	  for(var i = 0;i < terrain.length;i++){
+	    		var tempColumn = parseInt(terrain[i][0].substring(0,terrain[i][0].indexOf(",")));
+	    		var tempRow = parseInt(terrain[i][0].substring(terrain[i][0].indexOf(",")+1,terrain.length));
+	        	for(var h = 0; h < iTerrain.length; h++){
+	        		if(iTerrain[h][0] == terrain[i][1]){
+	        			var j = h;
+	        		}
+	        	}
+	    		//if(tempColumn <= 32 && tempRow <= 32)
+	    			terrainData[tempColumn][tempRow] = [terrain[i][1],iTerrain[j][1], iTerrain[j][2]];
+	      	  }
+		      DataService.setTerrain(terrainData);
+	  	      updateProgressBar(); //update progress bar
+	  	      fetchStatusData(type);
+	        });
+    	}
+    	else{
+      	  gapi.client.sheets.spreadsheets.values.get({
+              spreadsheetId: sheetId,
+              majorDimension: "ROWS",
+              range: 'Terrain Locations!A2:B',
+           }).then(function(response) {
+         	  terrain = response.result.values;
+         	  
+         	  //Initialize terrianData with "Plain" for all cells
+   	      for(var a = 0;a <= 32;a++){
+   	    	terrainData.push([]);
+   			for(var b = 0;b <= 32;b++)
+   				terrainData[a].push(["Plain","0","0"]);
+   	      }
+         	  for(var i = 0;i < terrain.length;i++){
+       		var tempColumn = parseInt(terrain[i][0].substring(0,terrain[i][0].indexOf(",")));
+       		var tempRow = parseInt(terrain[i][0].substring(terrain[i][0].indexOf(",")+1,terrain.length));
+           	for(var h = 0; h < iTerrain.length; h++){
+           		if(iTerrain[h][0] == terrain[i][1]){
+           			var j = h;
+           		}
+           	}
+       		//if(tempColumn <= 32 && tempRow <= 32)
+       			terrainData[tempColumn][tempRow] = [terrain[i][1],iTerrain[j][1], iTerrain[j][2]];
+         	  }
+   	      DataService.setTerrain(terrainData);
+     	      updateProgressBar(); //update progress bar
+     	      fetchStatusData(type);
+           });
+    	}
       };
     
-    function fetchStatusData(){
+    function fetchStatusData(type){
     	gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: sheetId,
             majorDimension: "ROWS",
@@ -251,12 +361,12 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
         }).	then(function(response) {
         	statusEffData = response.result.values;
          	updateProgressBar(); //update progress bar
-         	processCharData();
+         	processCharData(type);
          	redirect();
         });
     };
     
-    function processCharData(){
+    function processCharData(type){
      	 for(var i = 0; i < characterData.length; i++){
      		
      		characterData[i].push(processImgUrl(charImages[i]));
