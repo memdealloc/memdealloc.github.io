@@ -62,7 +62,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
 	            spreadsheetId: sheetId,
 	            majorDimension: "COLUMNS",
 	            valueRenderOption: "FORMULA",
-	            range: 'Current Map!A6',
+	            range: 'Gaiden Current Map!A6',
 	          }).then(function(response) {
 	        	  var url = response.result.values[0][0];
 	        	  updateProgressBar();
@@ -119,7 +119,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	      gapi.client.sheets.spreadsheets.values.get({
     	          spreadsheetId: sheetId,
     	          majorDimension: "COLUMNS",
-    	          range: 'Stats!B1:44',
+    	          range: 'Gaiden Stats!B1:44',
     	        }).then(function(response) {
     	      	 characterData = response.result.values;
     	      	updateProgressBar();
@@ -145,7 +145,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
             gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: sheetId,
                 majorDimension: "COLUMNS",
-                range: 'Stats!A105:105',
+                range: 'Gaiden Stats!A105:105',
               }).then(function(response) {
                blurbs = response.result.values;
             	 updateProgressBar(); //update progress bar
@@ -238,7 +238,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
 	            spreadsheetId: sheetId,
 	            majorDimension: "ROWS",
 	            valueRenderOption: "FORMULA",
-	            range: 'Player Stats!B3:3',
+	            range: 'Gaiden Player Stats!B3:3',
 	        }).then(function(response) {
 	        	charImages = response.result.values[0];
 	         		updateProgressBar(); //update progress bar
@@ -265,7 +265,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
                 spreadsheetId: sheetId,
                 majorDimension: "ROWS",
                 valueRenderOption: "FORMULA",
-                range: 'Enemy Stats!B3:3',
+                range: 'Gaiden Enemy Stats!B3:3',
             }).then(function(response) {
             	charImages = charImages.concat(response.result.values[0]);
              		updateProgressBar(); //update progress bar
@@ -324,7 +324,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
       	  gapi.client.sheets.spreadsheets.values.get({
               spreadsheetId: sheetId,
               majorDimension: "ROWS",
-              range: 'Terrain Locations!A2:B',
+              range: 'Gaiden Terrain Locations!A2:B',
            }).then(function(response) {
          	  terrain = response.result.values;
          	  
@@ -410,11 +410,14 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     			var weaknesses = classStats[i][24];
     			var weakList = [];
     			
-    			if(characterData[id][1] == "Reaper" || characterData[id][1] == "Apex Reaper" || characterData[id][1] == "Nadir Reaper"){
+    			if(characterData[id][1] == "Reaper" || characterData[id][1] == "Apex Reaper" || characterData[id][1] == "Nadir Reaper" || characterData[id][1] == "Nadir Reaper"){
     				weakList.push("Reaper");
     			}
     			if(characterData[id][1] == "Loveless"){
     				weakList.push("Loveless");
+    			}
+    			if(characterData[id][1] == "Lettie"){
+    				weakList.push("Cloud");
     			}
     			if(realname == "Devastator"){
     				weakList.push("Reptile");

@@ -1070,7 +1070,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     $scope.determineInfoColor = function(index){
     	var aff = $scope.enemyData[index][1];
     	
-    	if(aff == "Immolan Guard" || aff == "Gershom"){
+    	if(aff == "Immolan Guard" || aff == "Gershom" || aff == "Guile"){
     		return "#E01616";
     	}
     	else if(aff == "Environment"){
@@ -1079,7 +1079,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	else if(aff == "Belenus"){
     		return "#FF6600";
     	}
-    	else if(aff == "Reaper" || aff == "Nadir Reaper" || aff == "Apex Reaper"){
+    	else if(aff == "Reaper" || aff == "Nadir Reaper" || aff == "Apex Reaper" || aff == "Lettie"){
     		return "#E900E9";
     	}
     	else if(aff == "Loveless"){
