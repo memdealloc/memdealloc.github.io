@@ -695,7 +695,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Thunder" || name == "Elthunder" || name == "Arcthunder" || name == "Thoron" || name == "Torden" || name == "Magnum Bolt"){
     		return "IMG/Items/type_tome_thunder.png";
     	}
-    	if(name == "Freeze" || name == "Elfreeze" || name == "Arcfreeze" ||  name == "Nilflheim" || name == "Magnum Chill" || name == "Akull"){
+    	if(name == "Freeze" || name == "Elfreeze" || name == "Arcfreeze" ||  name == "Niflheim" || name == "Magnum Chill" || name == "Akull"){
     		return "IMG/Items/type_tome_freeze.png";
     	}
     	if(name == "Shadow Shot" || name == "Venom Shot"){

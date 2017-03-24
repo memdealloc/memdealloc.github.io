@@ -119,7 +119,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	      gapi.client.sheets.spreadsheets.values.get({
     	          spreadsheetId: sheetId,
     	          majorDimension: "COLUMNS",
-    	          range: 'Gaiden Stats!B1:44',
+    	          range: 'Gaiden Stats!A1:44',
     	        }).then(function(response) {
     	      	 characterData = response.result.values;
     	      	updateProgressBar();
