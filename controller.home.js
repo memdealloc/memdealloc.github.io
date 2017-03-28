@@ -882,7 +882,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     $scope.enemyHasStatus = function(index){
     	var status = $scope.enemyData[index][29][0];
     	//these are statuses that don't display an icon
-    	if(status != "None" && status != "Emerging" && status != "Marked" && status != "Defeated" && status != "Disconcerted" && status != "Blessed") return true;
+    	if(status != "None" && status != "Emerging" && status != "Marked" && status != "Defeated" && status != "Disconcerted" && status != "Blessed" && status != "Regenerating") return true;
     	else return false;
     };
     
