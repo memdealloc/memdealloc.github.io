@@ -782,7 +782,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Bloom Trophy"){
     		return "IMG/Items/type_none_trophy.png";
     	}
-    	if(name == "Calling Card" || name == "Death Arcana"){
+    	if(name == "Calling Card" || name == "Death Arcana"|| name == "Arcana Deck"){
     		return "IMG/Items/type_none_card.png";
     	}
     	
