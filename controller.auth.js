@@ -93,7 +93,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
 	    	case 10: return "Rotating pointless image..."; break;
 	    	case 11: return "Distributing ice to Damian's victims..."; break;
 	    	case 12: return "Praising the Son..."; break;
-	    	case 13: return "Administering hug to Raphael..."; break;
+	    	case 13: return "F L A C E L A O D I G N"; break;
 	    	case 14: return "Taping Soldier 01 back together..."; break;
 	    	case 15: return "Attacking defenseless soldiers..."; break;
 	    	case 16: return "Blaming Deme for Dea's mistakes..."; break;
@@ -410,7 +410,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     			var weaknesses = classStats[i][24];
     			var weakList = [];
     			
-    			if(characterData[id][1] == "Reaper" || characterData[id][1] == "Apex Reaper" || characterData[id][1] == "Nadir Reaper" || characterData[id][1] == "Nadir Reaper"){
+    			if(realname == "Fallacy" || realname == "Dolour" || characterData[id][1] == "Reaper" || characterData[id][1] == "Apex Reaper" || characterData[id][1] == "Nadir Reaper" || characterData[id][1] == "Nadir Reaper"){
     				weakList.push("Reaper");
     			}
     			if(characterData[id][1] == "Loveless"){

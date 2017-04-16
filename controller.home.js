@@ -710,6 +710,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Earthquake"){
     		return "IMG/Items/type_tome_earth.png";
     	}
+    	if(name == "Verglas"){
+    		return "IMG/Items/type_sword_verglas.png";
+    	}
     	
     	
     	
