@@ -410,7 +410,7 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     			var weaknesses = classStats[i][24];
     			var weakList = [];
     			
-    			if(realname == "Fallacy" || realname == "Dolour" || characterData[id][1] == "Reaper" || characterData[id][1] == "Apex Reaper" || characterData[id][1] == "Nadir Reaper" || characterData[id][1] == "Nadir Reaper"){
+    			if(realname == "Fallacy" || realname == "Dolour" || characterData[id][1] == "Reaper" || characterData[id][1] == "Apex Reaper" || characterData[id][1] == "Nadir Reaper" || characterData[id][1] == "Community (Reaper)"){
     				weakList.push("Reaper");
     			}
     			if(characterData[id][1] == "Loveless"){

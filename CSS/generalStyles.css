@@ -14,6 +14,36 @@
 	text-align: left;
 }
 
+.fog{
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   background-image: url("../IMG/fog.png");
+   width: 512px;
+   height: 512px;
+   background-repeat: repeat;
+   background-size: 25%;
+   background-position: 0% 0%;
+   opacity: .3;
+   /* Apply animation to this element */
+   -moz-animation: scroll-diagonal 10s linear infinite;
+   -webkit-animation: scroll-diagonal 10s linear infinite;
+   animation: scroll-diagonal 30s linear infinite;
+}
+
+@-moz-keyframes scroll-diagonal {
+ 0%   { background-position: 0% 0%; }
+ 100%  { background-position: 100% 100%; }
+}
+@-webkit-keyframes scroll-up {
+ 0%   { background-position: 0% 0%; }
+ 100%  { background-position: 100% 100%; }
+}
+@keyframes scroll-diagonal {
+ 0%   { background-position: 0% 0%; }
+ 100%  { background-position: 100% 100%; }
+}
+
 audio { 
 	position: absolute;
 	display: block; 

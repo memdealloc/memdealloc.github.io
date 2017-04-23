@@ -2,6 +2,10 @@
 
 	<img id="map" class="absolutePos" ng-src="{{map}}">
 	
+	<div class="fog"></div>
+	
+	
+	
 	<!--Draw tile names-->
 	<div ng-repeat="(yIndex,row) in rows" class="glowBoxIndent absolutePos" ng-style="{top: determineGlowY(yIndex)}">
 		<div class="glowBox" ng-repeat="(indexX,column) in columns" title="({{column}},{{row}}) {{terrainData[column][row][0]}}: {{terrainData[column][row][1]}}🚶  {{terrainData[column][row][2]}}⛨" ng-style="{left: determineGlowX(indexX)}">
