@@ -419,6 +419,9 @@ app.controller('AuthCtrl', ['$scope', '$location', '$interval', 'DataService', f
     			if(characterData[id][1] == "Lettie"){
     				weakList.push("Cloud");
     			}
+    			if(realname == "Ravager"){
+    				weakList.push("Beast");
+    			}
     			if(realname == "Devastator"){
     				weakList.push("Reptile");
     			}

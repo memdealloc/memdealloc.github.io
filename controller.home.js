@@ -769,6 +769,9 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	if(name == "Evisceration"){
     		return "IMG/Items/type_monster_feather.png";
     	}
+    	if(name == "Ravage"){
+    		return "IMG/Items/type_monster_ravage.png";
+    	}
     	if(name == "Obelisk"){
     		return "IMG/Items/type_sword_obelisk.png";
     	}
