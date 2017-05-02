@@ -1087,7 +1087,7 @@ app.controller('HomeCtrl', ['$scope', '$location', '$interval', 'DataService', f
     	else if(aff == "Environment"){
     		return "#FFFFFF";
     	}
-    	else if(aff == "Belenus"){
+    	else if(aff == "Belenus" || aff == "Self"){
     		return "#FF6600";
     	}
     	else if(aff == "Reaper" || aff == "Nadir Reaper" || aff == "Apex Reaper" || aff == "Lettie"){
